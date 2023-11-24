@@ -7,9 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     Rigidbody ballRigidbody;
+    int score = 0;
+    public int winScore;
 
     float xInput;
     float zInput;
+
+    public GameObject winText;
 
     void Awake()
     {
@@ -30,5 +34,20 @@ public class PlayerController : MonoBehaviour
         zInput = Input.GetAxis("Vertical"); // Y seria para cima e para baixo, como um pulo
 
         ballRigidbody.AddForce(xInput * speed, 0, zInput * speed);        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Coin")
+        {
+            other.gameObject.SetActive(false);
+            score++;
+
+            if(score >= winScore)
+            {
+                winText.SetActive(true);
+            }
+        } 
+        
     }
 }
