@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
-{
-    public float speed;
+{    
     Rigidbody ballRigidbody;
+    [SerializeField] float speed;
+
     int score = 0;
-    public int winScore;
+    [SerializeField] int winScore;
+    [SerializeField] GameObject winText;
 
     float xInput;
-    float zInput;
-
-    public GameObject winText;
+    float zInput;    
 
     void Awake()
     {
